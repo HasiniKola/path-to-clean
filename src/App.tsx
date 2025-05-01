@@ -10,6 +10,9 @@ import Map from "./pages/Map";
 import Leaderboard from "./pages/Leaderboard";
 import Education from "./pages/Education";
 import NotFound from "./pages/NotFound";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+import Municipality from "./pages/Municipality";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +28,9 @@ const App = () => (
           <Route path="/map" element={<Map />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/education" element={<Education />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/municipality" element={<Municipality />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

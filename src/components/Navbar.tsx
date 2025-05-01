@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Menu, X, MapPin } from 'lucide-react';
+import { Menu, X, MapPin, LogIn } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +24,15 @@ const Navbar = () => {
           <Link to="/map" className="font-medium text-gray-700 hover:text-foliage-medium transition-colors">Map</Link>
           <Link to="/leaderboard" className="font-medium text-gray-700 hover:text-foliage-medium transition-colors">Leaderboard</Link>
           <Link to="/education" className="font-medium text-gray-700 hover:text-foliage-medium transition-colors">Learn</Link>
-          <Button variant="default">Get Started</Button>
+          <Link to="/signin" className="font-medium text-gray-700 hover:text-foliage-medium transition-colors">
+            <Button variant="outline" size="sm" className="flex items-center gap-1">
+              <LogIn className="h-4 w-4" />
+              Sign In
+            </Button>
+          </Link>
+          <Link to="/signup">
+            <Button variant="default">Join Now</Button>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -75,7 +83,16 @@ const Navbar = () => {
             >
               Learn
             </Link>
-            <Button variant="default" className="w-full">Get Started</Button>
+            <Link 
+              to="/signin" 
+              className="px-4 py-2 text-gray-700 hover:bg-foliage-light hover:text-foliage-dark rounded-md transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              Sign In
+            </Link>
+            <Link to="/signup" onClick={() => setIsOpen(false)}>
+              <Button variant="default" className="w-full">Join Now</Button>
+            </Link>
           </div>
         </div>
       )}
