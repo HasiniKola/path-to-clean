@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -7,7 +6,33 @@ import Footer from '@/components/Footer';
 import FeatureCard from '@/components/FeatureCard';
 import LeaderboardCard from '@/components/LeaderboardCard';
 import { Button } from '@/components/ui/button';
-import { Camera, Map, Award, BookOpen } from 'lucide-react';
+import { Camera, Map, Award, BookOpen, ArrowRight, Book } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+
+// Educational content preview
+const educationPreview = [
+  {
+    id: '1',
+    title: 'The Impact of Single-Use Plastics',
+    excerpt: 'Learn about how single-use plastics affect our environment and what alternatives are available.',
+    image: 'https://images.unsplash.com/photo-1727201918233-af4c663e84de',
+    category: 'Environmental Impact',
+  },
+  {
+    id: '2',
+    title: 'How to Start Composting at Home',
+    excerpt: 'A beginner\'s guide to setting up and maintaining a compost system in your own backyard or apartment.',
+    image: 'https://images.unsplash.com/photo-1582392506116-3463666d1275',
+    category: 'Sustainable Living',
+  },
+  {
+    id: '3',
+    title: 'Understanding Waste Segregation',
+    excerpt: 'Why segregation is important and how proper waste sorting can significantly impact recycling effectiveness.',
+    image: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b',
+    category: 'Waste Management',
+  }
+];
 
 const Index = () => {
   return (
@@ -75,6 +100,60 @@ const Index = () => {
                 <div className="text-4xl font-bold text-foliage-dark mb-2">1,850+</div>
                 <p className="text-gray-600">Active Community Members</p>
               </div>
+            </div>
+          </div>
+        </section>
+        
+        {/* Educational Content Preview Section */}
+        <section className="py-16 px-6 bg-white">
+          <div className="container mx-auto">
+            <div className="flex flex-col lg:flex-row justify-between items-start mb-8">
+              <div>
+                <h2 className="text-3xl font-bold text-gray-900 mb-2">Environmental Learning Hub</h2>
+                <p className="text-gray-600 max-w-2xl">
+                  Expand your knowledge about environmental issues, waste management, and sustainable practices with our curated resources.
+                </p>
+              </div>
+              <Link to="/education" className="mt-4 lg:mt-0">
+                <Button variant="outline" className="flex items-center gap-2">
+                  <Book className="h-4 w-4" />
+                  <span>Visit Learning Hub</span>
+                </Button>
+              </Link>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {educationPreview.map((item) => (
+                <Card key={item.id} className="overflow-hidden hover:shadow-md transition-shadow">
+                  <div className="aspect-video relative">
+                    <img 
+                      src={item.image} 
+                      alt={item.title}
+                      className="w-full h-full object-cover" 
+                    />
+                    <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded text-xs font-medium text-foliage-dark">
+                      {item.category}
+                    </div>
+                  </div>
+                  <CardContent className="p-4">
+                    <h3 className="font-semibold text-lg text-gray-900 mb-2">{item.title}</h3>
+                    <p className="text-gray-600 text-sm mb-4 line-clamp-2">{item.excerpt}</p>
+                    <Link to={`/education?article=${item.id}`}>
+                      <Button variant="ghost" size="sm" className="text-foliage-dark hover:text-foliage-dark/80">
+                        Read more <ArrowRight className="ml-1 h-3 w-3" />
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+            
+            <div className="mt-8 text-center">
+              <Link to="/education">
+                <Button>
+                  View All Educational Resources
+                </Button>
+              </Link>
             </div>
           </div>
         </section>

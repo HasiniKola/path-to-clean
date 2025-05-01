@@ -17,11 +17,12 @@ interface EducationalContent {
 interface EducationalCardProps {
   content: EducationalContent;
   className?: string;
+  onClick?: () => void;
 }
 
-const EducationalCard: React.FC<EducationalCardProps> = ({ content, className }) => {
+const EducationalCard: React.FC<EducationalCardProps> = ({ content, className, onClick }) => {
   return (
-    <Card className={cn("overflow-hidden hover:shadow-md transition-shadow", className)}>
+    <Card className={cn("overflow-hidden hover:shadow-md transition-shadow cursor-pointer", className)} onClick={onClick}>
       <div className="aspect-video relative">
         <img 
           src={content.image} 
@@ -37,7 +38,15 @@ const EducationalCard: React.FC<EducationalCardProps> = ({ content, className })
         <p className="text-gray-600 text-sm mb-4 line-clamp-2">{content.excerpt}</p>
         <div className="flex justify-between items-center">
           <span className="text-xs text-gray-500">{content.readTime} min read</span>
-          <Button variant="ghost" size="sm" className="text-foliage-dark hover:text-foliage-dark/80">
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            className="text-foliage-dark hover:text-foliage-dark/80"
+            onClick={(e) => {
+              e.stopPropagation(); // Prevent triggering the card's onClick
+              if (onClick) onClick();
+            }}
+          >
             Read more <ArrowRight className="ml-1 h-3 w-3" />
           </Button>
         </div>

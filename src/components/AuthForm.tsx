@@ -50,14 +50,28 @@ const AuthForm: React.FC<AuthFormProps> = ({ type, className }) => {
       // Mock successful authentication
       await new Promise(resolve => setTimeout(resolve, 1000));
       
+      // Store user data in localStorage (simple profile simulation)
+      const userData = {
+        email: data.email,
+        name: data.email.split('@')[0],
+        role: data.email.includes('municipality') || data.email.includes('admin') ? 'admin' : 'user',
+        joinDate: new Date().toISOString(),
+        points: 120,
+        reportsSubmitted: 5
+      };
+      
+      localStorage.setItem('user_profile', JSON.stringify(userData));
+      
       // Show success message
-      toast.success(`${type === 'signin' ? 'Sign in' : 'Sign up'} successful!`);
+      toast.success(`${type === 'signin' ? 'Sign in' : 'Sign up'} successful! Welcome ${userData.name}!`);
       
       // Redirect based on type
       if (data.email.includes('municipality') || data.email.includes('admin')) {
         navigate('/municipality');
       } else {
-        navigate('/');
+        const returnPath = localStorage.getItem('returnPath') || '/';
+        localStorage.removeItem('returnPath');
+        navigate(returnPath);
       }
     } catch (error) {
       toast.error(`Authentication failed. Please try again.`);
