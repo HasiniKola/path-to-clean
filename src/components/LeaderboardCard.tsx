@@ -1,7 +1,10 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+import { Check } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 interface UserRank {
   id: string;
@@ -72,6 +75,7 @@ const LeaderboardCard: React.FC<LeaderboardCardProps> = ({
   limit = 5
 }) => {
   const topUsers = mockUsers.slice(0, limit);
+  const { toast } = useToast();
 
   const getRankColor = (rank: number): string => {
     switch (rank) {

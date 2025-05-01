@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -8,9 +8,21 @@ import AchievementCard from '@/components/AchievementCard';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Medal, Award, Trophy } from 'lucide-react';
+import { Medal, Award, Trophy, Check } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 const Leaderboard = () => {
+  const { toast } = useToast();
+  const [hasJoined, setHasJoined] = useState(false);
+
+  const handleJoin = () => {
+    setHasJoined(true);
+    toast({
+      title: "Success!",
+      description: "You've joined the community and can now contribute!",
+    });
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -115,11 +127,23 @@ const Leaderboard = () => {
 
                     {/* Join Now Button - Mobile Version */}
                     <div className="mt-8 text-center lg:hidden">
-                      <Link to="/signup">
-                        <Button size="lg" className="w-full md:w-auto bg-foliage-dark hover:bg-foliage-dark/90">
+                      {!hasJoined ? (
+                        <Button 
+                          size="lg" 
+                          className="w-full md:w-auto bg-foliage-dark hover:bg-foliage-dark/90"
+                          onClick={handleJoin}
+                        >
                           Join Now & Start Contributing
                         </Button>
-                      </Link>
+                      ) : (
+                        <Button 
+                          size="lg" 
+                          className="w-full md:w-auto bg-green-600 hover:bg-green-700"
+                          disabled
+                        >
+                          <Check className="mr-2 h-4 w-4" /> Joined Community
+                        </Button>
+                      )}
                     </div>
                   </div>
                   
@@ -159,11 +183,21 @@ const Leaderboard = () => {
                         
                         {/* Join Now Button - Desktop Version */}
                         <div className="mt-6 hidden lg:block">
-                          <Link to="/signup">
-                            <Button className="w-full bg-foliage-dark hover:bg-foliage-dark/90">
+                          {!hasJoined ? (
+                            <Button 
+                              className="w-full bg-foliage-dark hover:bg-foliage-dark/90"
+                              onClick={handleJoin}
+                            >
                               Join Now & Start Contributing
                             </Button>
-                          </Link>
+                          ) : (
+                            <Button 
+                              className="w-full bg-green-600 hover:bg-green-700"
+                              disabled
+                            >
+                              <Check className="mr-2 h-4 w-4" /> Joined Community
+                            </Button>
+                          )}
                         </div>
                       </CardContent>
                     </Card>

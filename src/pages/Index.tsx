@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -10,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Camera, Map, Award, BookOpen, ArrowRight, Book } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
-// Educational content preview with fixed image paths
+// Educational content preview with fixed and reliable image paths
 const educationPreview = [
   {
     id: '1',

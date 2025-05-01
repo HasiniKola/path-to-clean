@@ -27,7 +27,8 @@ const EducationalCard: React.FC<EducationalCardProps> = ({ content, className, o
         <img 
           src={content.image} 
           alt={content.title}
-          className="w-full h-full object-cover" 
+          className="w-full h-full object-cover"
+          loading="lazy"
         />
         <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded text-xs font-medium text-foliage-dark">
           {content.category}
