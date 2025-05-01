@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -9,13 +10,13 @@ import { Button } from '@/components/ui/button';
 import { Camera, Map, Award, BookOpen, ArrowRight, Book } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
-// Educational content preview
+// Educational content preview with fixed image paths
 const educationPreview = [
   {
     id: '1',
     title: 'The Impact of Single-Use Plastics',
     excerpt: 'Learn about how single-use plastics affect our environment and what alternatives are available.',
-    image: 'https://images.unsplash.com/photo-1727201918233-af4c663e84de',
+    image: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b',
     category: 'Environmental Impact',
   },
   {
@@ -29,7 +30,7 @@ const educationPreview = [
     id: '3',
     title: 'Understanding Waste Segregation',
     excerpt: 'Why segregation is important and how proper waste sorting can significantly impact recycling effectiveness.',
-    image: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b',
+    image: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b',
     category: 'Waste Management',
   }
 ];

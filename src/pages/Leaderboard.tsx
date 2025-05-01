@@ -1,11 +1,13 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import LeaderboardCard from '@/components/LeaderboardCard';
 import AchievementCard from '@/components/AchievementCard';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { Medal, Award, Trophy } from 'lucide-react';
 
 const Leaderboard = () => {
@@ -110,6 +112,15 @@ const Leaderboard = () => {
                     
                     {/* Full Leaderboard */}
                     <LeaderboardCard limit={10} />
+
+                    {/* Join Now Button - Mobile Version */}
+                    <div className="mt-8 text-center lg:hidden">
+                      <Link to="/signup">
+                        <Button size="lg" className="w-full md:w-auto bg-foliage-dark hover:bg-foliage-dark/90">
+                          Join Now & Start Contributing
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
                   
                   {/* Points System */}
@@ -145,6 +156,15 @@ const Leaderboard = () => {
                             Top performers each month receive special recognition and eco-friendly prizes from our sponsors.
                           </p>
                         </div>
+                        
+                        {/* Join Now Button - Desktop Version */}
+                        <div className="mt-6 hidden lg:block">
+                          <Link to="/signup">
+                            <Button className="w-full bg-foliage-dark hover:bg-foliage-dark/90">
+                              Join Now & Start Contributing
+                            </Button>
+                          </Link>
+                        </div>
                       </CardContent>
                     </Card>
                   </div>
@@ -156,9 +176,19 @@ const Leaderboard = () => {
                   <div className="text-center max-w-md">
                     <Award className="h-16 w-16 text-gray-300 mx-auto mb-4" />
                     <h2 className="text-2xl font-bold text-gray-700 mb-3">Sign in to view your achievements</h2>
-                    <p className="text-gray-500">
+                    <p className="text-gray-500 mb-6">
                       Create an account or sign in to track your progress and see your environmental impact achievements.
                     </p>
+                    <Link to="/signin">
+                      <Button className="bg-foliage-dark hover:bg-foliage-dark/90 mr-4">
+                        Sign In
+                      </Button>
+                    </Link>
+                    <Link to="/signup">
+                      <Button variant="outline">
+                        Sign Up
+                      </Button>
+                    </Link>
                   </div>
                 </div>
                 
