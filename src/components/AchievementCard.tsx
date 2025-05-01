@@ -103,11 +103,9 @@ const AchievementCard: React.FC<AchievementCardProps> = ({ className }) => {
                       value={(achievement.progress / achievement.goal) * 100} 
                       className={cn(
                         "h-2",
-                        achievement.isCompleted ? "bg-gray-100" : "bg-gray-100"
-                      )}
-                      indicatorClassName={
+                        achievement.isCompleted ? "bg-gray-100" : "bg-gray-100",
                         achievement.isCompleted ? "bg-foliage-dark" : "bg-foliage-medium"
-                      }
+                      )}
                     />
                   </div>
                 </div>
